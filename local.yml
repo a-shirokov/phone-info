@@ -1,0 +1,53 @@
+version: '3'
+
+volumes:
+  local_postgres_data: {}
+  local_postgres_data_backups: {}
+
+services:
+  django: &django
+    build:
+      context: .
+      dockerfile: compose/django/local/Dockerfile
+    image: phone_info_django
+    depends_on:
+      - postgres
+      - redis
+    volumes:
+      - ./src/django:/app
+    env_file:
+      - ./.envs/.local/.django
+      - ./.envs/.local/.postgres
+    command: /start
+
+  postgres:
+    build:
+      context: .
+      dockerfile: compose/postgres/Dockerfile
+    image: phone_info_postgres
+    volumes:
+      - local_postgres_data:/var/lib/postgresql/data
+      - local_postgres_data_backups:/backups
+    env_file:
+      - ./.envs/.local/.postgres
+
+  redis:
+    image: redis:5
+
+  celery-worker:
+    <<: *django
+    image: phone_info_local_celeryworker
+    depends_on:
+      - redis
+      - postgres
+    ports: []
+    command: /start-celeryworker
+
+  celery-beat:
+    <<: *django
+    image: phone_info_local_celerybeat
+    depends_on:
+      - redis
+      - postgres
+    ports: []
+    command: /start-celerybeat

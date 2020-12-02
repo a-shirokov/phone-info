@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }} · {{ block.super }}{% endblock %}
+
+{% block content %}
+<form method="post">
+  {% csrf_token %}
+  {{ form }}
+  <input type="submit" value="Submit">
+</form>
+
+{% if phone %}
+<div>
+  {% if phone_info %}
+    <dl>
+      <dt>Номер телефона:</dt>
+      <dd>{{ phone.as_e164 }}</dd>
+      <dt>Оператор:</dt>
+      <dd>{{ phone_info.operator_name }}</dd>
+      <dt>Регион:</dt>
+      <dd>{{ phone_info.region_name }}</dd>
+    </dl>
+  {% else %}
+    <p>Информация о номере телефона <span>{{ phone.as_e164 }}</span> отсутствует.</p>
+  {% endif %}
+</div>
+{% endif %}
+{% endblock %}

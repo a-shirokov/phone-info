@@ -1,0 +1,43 @@
+[tool.poetry]
+name = "phone-info"
+version = "0.1.0"
+description = ""
+authors = ["Alexi Shirokov <alexi.shirokov@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+psycopg2 = "*"
+phonenumbers = "*"
+requests = "*"
+redis = "*"
+
+django = "^3.1"
+django-environ = "*"
+django-cors-headers = "*"
+django-phonenumber-field = "*"
+django-redis = "*"
+
+djangorestframework = "*"
+coreapi = "*"
+
+celery = "*"
+
+[tool.poetry.dev-dependencies]
+ipython = "*"
+ipdb = "*"
+autoflake = "*"
+flake8 = "*"
+isort = "*"
+pylint = "*"
+pylint-django = "*"
+pylint-celery = "*"
+black = { version = "*", allow-prereleases = true }
+mypy = "*"
+vulture = "*"
+
+pywatchman = "*"
+
+[build-system]
+requires = ["poetry>=1.0"]
+build-backend = "poetry.masonry.api"

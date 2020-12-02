@@ -1,0 +1,14 @@
+# General
+# -----------------------------------------------------------------------------
+USE_DOCKER=yes
+IPYTHONDIR=/app/.ipython
+
+DJANGO_SECRET_KEY=sa7zmod!$7gy(fa2ax_q#kbr&)0ffe6fk=^ry07o&ludaw-$h6
+
+# Redis
+# -----------------------------------------------------------------------------
+REDIS_URL=redis://redis:6379/0
+
+# Celery
+# -----------------------------------------------------------------------------
+CELERY_BROKER_URL=redis://redis:6379/10

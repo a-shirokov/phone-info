@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  django: &django
+    user: "1000:1000"
+    ports:
+      - "8888:8000"
+
+  postgres:
+    ports:
+      - "65432:5432"
