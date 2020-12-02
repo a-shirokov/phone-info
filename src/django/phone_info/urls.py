@@ -9,8 +9,7 @@ from phone_info.phone_numbering.api.urls import (  # noqa
 api_urlpatterns += phone_num_urls
 
 
-from phone_info.phone_numbering.web.views import PhoneInfoView
-
+from phone_info.phone_numbering.web.views import PhoneInfoView  # noqa
 urlpatterns = [
     path('', PhoneInfoView.as_view(), name='phone_info'),
 

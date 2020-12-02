@@ -24,4 +24,3 @@ def refresh_data():
             logger.exception(
                 f"Не удалось полносью загрузить данные из '{source}'."
             )
-
