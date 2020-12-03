@@ -26,10 +26,6 @@ class PhoneInfoView(FormView):
             phone=form.cleaned_data['phone'],
             phone_info=phone_info,
         )
-        context['phone_info'] = phone_info
-
-        print(context)
-
         return self.render_to_response(context)
 
     @method_decorator(csrf_protect)
